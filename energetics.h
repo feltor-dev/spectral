@@ -11,6 +11,7 @@ namespace toefl{
 
     ///@addtogroup solvers
     ///@{
+
     /**
      * @brief Blas1 function
      *
@@ -26,6 +27,7 @@ void axpby(double alpha,  const Matrix<double, TL_DFT>& x, double beta, Matrix<d
         for( unsigned j=0; j<x.cols(); j++)
             y(i,j) = alpha*x(i,j)+beta*y(i,j);
 }
+
 
 /**
  * @brief Blas1 dot product
@@ -46,6 +48,7 @@ double dot( const Matrix<double, TL_DFT>& m1, const Matrix<double, TL_DFT>& m2)
     return sum;
 
 }
+
 
 /**
  * @brief Compute dot product
@@ -73,6 +76,7 @@ double dot( const std::vector<std::complex<double> >& v1, const std::vector<std:
     //if( imag(sum) > 1e-12) std::cerr<<sum << "WARNING: Imag not zero!\n";
     return real( sum);
 }
+
 
 /**
  * @brief Compute dot product
@@ -121,6 +125,7 @@ void remove_average_y( const Matrix<double, TL_DFT>& in, Matrix<double, TL_DFT>&
             m(i,j) -= average[j]/in.rows();
 }
 
+
 /**
  * @brief Compute y derivative using spectral method
  *
@@ -143,6 +148,7 @@ void dy( const Matrix<double, TL_DFT>& in, Matrix<double, TL_DFT>& out, double h
     for( unsigned j=0; j<in.cols(); j++)
         out(rows-1,j) = (in(0,j) - in(rows-2, j))/2./h;
 }
+
 
 /**
  * @brief Compute Energetics of INNTO code

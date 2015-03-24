@@ -3,6 +3,7 @@ INCLUDE = -I../../inc
 INCLUDE += -I$(HOME)/include
 
 CFLAGS = -Wall -std=c++0x -fopenmp
+
 CFLAGS+= -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_OMP#for nc_utilities
 GLFLAGS= -lfftw3 -lm 
 GLFLAGS+=$$(pkg-config --static --libs glfw3)
@@ -12,6 +13,7 @@ ifeq ($(strip $(system)),leo3)
 INCLUDE += -I$(UIBK_HDF5_INC)
 #INCLUDE += -I$(UIBK_OPENMPI_INC)
 INCLUDE += -I$(UIBK_FFTW_INC)
+
 INCLUDE += -I$(UIBK_NETCDF_4_INC)
 
 LIBS 	 = -L$(UIBK_HDF5_LIB) -lhdf5 -lhdf5_hl 
@@ -20,6 +22,7 @@ LIBS 	+= -L$(UIBK_NETCDF_4_LIB) -lnetcdf -lcurl -lm
 GLFLAGS  = -lm
 CXX = mpicxx
 endif
+
 
 
 all: innto innto_per innblobs innto_hpc innto_hw equations_t blueprint_t
@@ -39,6 +42,7 @@ innto_hpc: innto_hpc.cpp dft_dft_solver.h blueprint.h equations.h
 innto_hw: innto_hw.cpp dft_dft_solver.h blueprint.h equations.h energetics.h
 	$(CXX) -O2 $< $(CFLAGS) $(INCLUDE) $(LIBS) -o $@
 
+
 %_t: %_t.cpp %.h
 	$(CXX) -DTL_DEBUG $< $(CFLAGS) $(INCLUDE) $(LIBS) -o $@
 
@@ -51,6 +55,7 @@ generator_hw: generator_hw.cpp
 .PHONY: clean doc
 
 clean:
+
 	rm -f *_t *_b innto innblobs innto_hpc innto_hw innto_per
 
 doc: 
