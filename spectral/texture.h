@@ -13,7 +13,7 @@
 #include "matrix.h"
 //DEPRECATED: use draw library instead
 
-namespace toefl{
+namespace spectral{
 /*! @addtogroup utilitiesX
  * @{
  */
@@ -116,7 +116,7 @@ colormap_ext redblue_ext()
     return M;
 }
 
-typedef toefl::Matrix<std::array<float,3>, toefl::TL_NONE> Texture_RGBf; //!< This texture contains three floats per texel
+typedef spectral::Matrix<std::array<float,3>, spectral::TL_NONE> Texture_RGBf; //!< This texture contains three floats per texel
 
 
 /*! @brief Update a texture with a given field for use of the glTexImage2D() function
@@ -135,7 +135,7 @@ void gentexture_RGBf( Texture_RGBf& tex, const M& field, const double maxabs)
 {
 #ifdef TL_DEBUG
     if( tex.rows() != field.rows() || tex.cols() != field.cols())
-        throw toefl::Message( "theta and tex have different sizes!", ping);
+        throw spectral::Message( "theta and tex have different sizes!", ping);
 #endif
     const static colormap_ext cm = redblue_ext(); // extended colormap
     
@@ -180,7 +180,7 @@ void gentexture_RGBf_temp( Texture_RGBf& tex, const M& theta, const double ray)
 {
 #ifdef TL_DEBUG
     if( tex.rows() != theta.rows() || tex.cols() != theta.cols())
-        throw toefl::Message( "theta and tex have different sizes!", ping);
+        throw spectral::Message( "theta and tex have different sizes!", ping);
 #endif
 
     const static colormap_ext cm_temp = redblue_ext(); // extended colormap
@@ -204,5 +204,5 @@ void gentexture_RGBf_temp( Texture_RGBf& tex, const M& theta, const double ray)
 
 ///@}
 
-} //namespace toefl
+} //namespace spectral
 #endif // _TL_TEXTURE_

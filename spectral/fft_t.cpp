@@ -7,7 +7,7 @@
 #include <complex>
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 
 int main()
 {

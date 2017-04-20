@@ -3,7 +3,7 @@
 #include "matrix.h"
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 
 typedef double type;
 typedef Matrix<type, TL_DFT> DoubMat;

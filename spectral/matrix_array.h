@@ -3,7 +3,7 @@
 #include <array>
 #include "matrix.h"
 
-namespace toefl{
+namespace spectral{
 
 /*! @brief Make an array of matrices 
  *
@@ -113,7 +113,7 @@ struct MatrixArray<T,P,6>
 };
 ///@endcond
 
-}//namespace toefl
+}//namespace spectral
 
 #endif //_TL_MATRIX_ARRAY_
 

@@ -4,7 +4,7 @@
 #include "drt_drt.h"
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 
 
 fftw_r2r_kind kind = FFTW_RODFT00;

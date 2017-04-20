@@ -1,7 +1,7 @@
 #error Documentation only
-/*! @namespace toefl
+/*! @namespace spectral
  * @brief This is the namespace for all functions and 
- * classes defined and used by the toefl solvers.
+ * classes defined and used by the spectral solvers.
  */
 /*! 
  * @defgroup TOEFL The TOEFL library

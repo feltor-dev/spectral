@@ -8,7 +8,7 @@
 
 
 using namespace  std;
-using namespace toefl;
+using namespace spectral;
 
 typedef std::complex<double> Complex;
 //initial mode

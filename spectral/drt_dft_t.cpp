@@ -4,7 +4,7 @@
 #include "drt_dft.h"
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 
 int main()
 {

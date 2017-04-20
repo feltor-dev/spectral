@@ -9,7 +9,7 @@
 #include <time.h>
 #include <math.h>
 
-namespace toefl
+namespace spectral
 {
 
 /*! @addtogroup utilitiesX
@@ -115,6 +115,6 @@ private:
 };
 
 ///@}
-} // namespace toefl
+} // namespace spectral
 
 #endif // _TL_INIT_

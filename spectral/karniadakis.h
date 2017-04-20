@@ -5,7 +5,7 @@
 #include "matrix_array.h"
 #include "quadmat.h"
 
-namespace toefl{
+namespace spectral{
 /*! @brief Kinds of Stepper coefficients for karniadakis scheme
  * @ingroup algorithms
  */
@@ -292,5 +292,5 @@ void Karniadakis<n,T,P>::step_i( std::array< Matrix<double, P>, n>& v0, std::arr
 }
 
 
-} //namespace toefl
+} //namespace spectral
 #endif //_TL_KARNIADAKIS_

@@ -1,5 +1,5 @@
 system = home
-INCLUDE = -I../../inc
+INCLUDE = -I../../
 INCLUDE += -I$(HOME)/include
 
 CFLAGS = -Wall -std=c++0x -fopenmp

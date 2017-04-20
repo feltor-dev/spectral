@@ -3,7 +3,7 @@
 #include <sstream>
 #include <omp.h>
 
-#include "toefl/toefl.h"
+#include "spectral/spectral.h"
 #include "file/read_input.h"
 #include "draw/host_window.h"
 #include "dft_dft_solver.h"

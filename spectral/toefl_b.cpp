@@ -1,10 +1,10 @@
 #include <iostream>
 #include <iomanip>
-#include "toefl.h"
+#include "spectral.h"
 #include "draw/host_window.h"
 
 using namespace  std;
-using namespace toefl; 
+using namespace spectral; 
 
 typedef std::complex<double> Complex;
 

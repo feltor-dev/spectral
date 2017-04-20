@@ -6,15 +6,15 @@ DEBUG =
 
 GLFLAGS=$$(pkg-config --static --libs glfw3)
 
-toefl: toefl_b.cpp
+spectral: spectral_b.cpp
 	$(CXX) $(DEBUG) -O3 $< $(CFLAGS) $(INCLUDE) $(LIBS) $(GLFLAGS) -o $@
 	./$@
 
-toefl_t: toefl_t.cpp
+spectral_t: spectral_t.cpp
 	$(CXX) -DTL_DEBUG $< $(CFLAGS) $(INCLUDE) $(LIBS) $(GLFLAGS) -o $@
 	./$@
 
-toefl_b: toefl_b.cpp
+spectral_b: spectral_b.cpp
 	$(CXX) $(DEBUG) -O3 $< $(CFLAGS) $(INCLUDE) $(LIBS) $(GLFLAGS) -o $@
 	./$@
 
@@ -37,4 +37,4 @@ doc:
 	doxygen Doxyfile
 
 clean:
-	rm -f *_t *_b toefl
+	rm -f *_t *_b spectral

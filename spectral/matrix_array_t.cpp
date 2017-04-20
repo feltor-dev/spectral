@@ -3,7 +3,7 @@
 #include "quadmat.h"
 #include "matrix.h"
 
-using namespace toefl;
+using namespace spectral;
 using namespace std;
 
 

@@ -5,7 +5,7 @@
 #include "ghostmatrix.h"
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 template <class T>
 double sum( const T& jac)
 {

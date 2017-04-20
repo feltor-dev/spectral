@@ -6,7 +6,7 @@
 #include "quadmat.h"
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 
 
 //try to integrate d/dt y = y + y from 0 to 1 with y a nonlinearity and a linearity

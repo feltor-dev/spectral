@@ -5,7 +5,7 @@
 #include "matrix.h"
 #include "fft.h"
 
-namespace toefl
+namespace spectral
 {
 /*! @brief Class for 2d r2r transformation of Matrix using FFTW
  * 

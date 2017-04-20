@@ -10,7 +10,7 @@
 #include <iostream>
 #include "exceptions.h"
 
-namespace toefl{
+namespace spectral{
 /*! @brief POD container for quadratic fixed size matrices
  *
  * @ingroup containers
@@ -220,5 +220,5 @@ void invert( const QuadMat< T, 3>& m, QuadMat<T,3>& m1 )
     m1(2,1) = (temp01*temp20 - temp00*m(2,1))/det;
     m1(2,2) = (temp00*temp11 - temp10*temp01)/det;
 }
-} //namespace toefl
+} //namespace spectral
 #endif //_TL_QUADMAT_

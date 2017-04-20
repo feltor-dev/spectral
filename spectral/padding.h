@@ -1,7 +1,7 @@
 #ifndef _TL_PADDING_
 #define _TL_PADDING_
 
-namespace toefl{
+namespace spectral{
 
 /*! @brief Provide various padding types of the Matrix class
  * @ingroup containers
@@ -54,7 +54,7 @@ struct TotalNumberOf<TL_DRT_DFT>
 
 
 
-} //namespace toefl
+} //namespace spectral
 
 
 

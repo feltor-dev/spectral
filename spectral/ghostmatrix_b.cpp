@@ -4,7 +4,7 @@
 #include "ghostmatrix.h"
 #include <complex>
 
-using namespace toefl;
+using namespace spectral;
 using namespace std;
 
 

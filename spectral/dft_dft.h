@@ -6,7 +6,7 @@
 #include "fftw3.h"
 #include "fft.h"
 
-namespace toefl{
+namespace spectral{
 
 /*! @brief Class for 2d discrete fourier transformations of Matrix using FFTW
  *
@@ -151,6 +151,6 @@ void DFT_DFT::c2r( Matrix<complex, TL_NONE>& inout, Matrix<double, TL_DFT>& swap
     fftw_execute_dft_c2r( backward, fftw_cast(swap.getPtr()), swap.getPtr());
 }
 
-} //namespace toefl
+} //namespace spectral
 #endif // _TL_DFT_DFT_
 

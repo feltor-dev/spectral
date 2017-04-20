@@ -5,7 +5,7 @@
 
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 
 //why there are two coefficients in y direction
 /*

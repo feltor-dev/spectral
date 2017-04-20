@@ -22,7 +22,7 @@
  * rank, fftw_iodim dims[rank] //describe how you come to the next point inside a trafo for every index i.e. dims[0] describes the first index of the matrix m[i0][i1]...[i_rank-1]
  * howmany_rank, fftw_iodim howmany_dims[howmany_rank] //describe how you come to the first point of the next trafo
  */
-namespace toefl{
+namespace spectral{
 
 /*!@addtogroup fftw
  * @{

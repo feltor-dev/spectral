@@ -6,7 +6,7 @@
 #include "arakawa.h"
 #include "matrix.h"
 
-using namespace toefl;
+using namespace spectral;
 using namespace std;
 
 const unsigned rows = 3, cols = 10;

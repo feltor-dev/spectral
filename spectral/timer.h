@@ -4,7 +4,7 @@
 #include <sys/time.h>
 
 
-namespace toefl{
+namespace spectral{
 /*! @brief Very simple tool for performance measuring
  * @ingroup utilitiesX
  */

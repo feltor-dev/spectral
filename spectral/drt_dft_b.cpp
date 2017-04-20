@@ -7,7 +7,7 @@
 #include "timer.h"
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 
 const size_t rows = 512, cols = 4*512;
 fftw_r2r_kind kind = FFTW_RODFT10;

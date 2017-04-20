@@ -10,7 +10,7 @@
 /*! for the simplified construction of a Message use this Macro*/
 #define _ping_ __FILE__, __LINE__ 
 
-namespace toefl
+namespace spectral
 {
 
 /*! @brief class intended for the use in throw statements
@@ -48,6 +48,6 @@ class Message
                   << m<<std::endl;
     }
 };
-} //namespace toefl
+} //namespace spectral
 
 #endif // _MESSAGE_

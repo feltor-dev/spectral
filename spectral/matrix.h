@@ -8,7 +8,7 @@
 #include "exceptions.h"
 #include "padding.h"
 
-namespace toefl{
+namespace spectral{
 
 /*! @brief enum for telling to not allocate memory 
   @ingroup containers
@@ -496,7 +496,7 @@ const bool Matrix<T,P>::operator!= ( const Matrix& rhs) const
 
 
 
-} //namespace toefl
+} //namespace spectral
 
 
 #endif //_TL_MATRIX_

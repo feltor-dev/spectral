@@ -5,7 +5,7 @@
 #include "matrix.h"
 #include <array>
 
-namespace toefl{
+namespace spectral{
 
 /*! @brief Possible boundary conditions for the ghostmatrix class.
  * Naming follows FFTW R2R kind naming.
@@ -276,7 +276,7 @@ void GhostMatrix<T,P>::display( std::ostream& os)
         os << "\n";
     }
 }
-} //namespace toefl
+} //namespace spectral
 
 
 

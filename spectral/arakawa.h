@@ -10,7 +10,7 @@
 
 #include "quadmat.h"
 
-namespace toefl{
+namespace spectral{
 
 
 template< class M>
@@ -149,7 +149,7 @@ double boundary( const size_t i0, const size_t j0, const M& lhs, const M& rhs)
         }
     return interior( 1, 1, l, r);
 }
-} //namespace toefl
+} //namespace spectral
 #endif// _TL_ARAKAWA_
 
 

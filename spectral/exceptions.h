@@ -2,7 +2,7 @@
 #define _EXCEPTIONS_
 #include "message.h"
 
-namespace toefl{
+namespace spectral{
 
 
 /*! @addtogroup exceptions

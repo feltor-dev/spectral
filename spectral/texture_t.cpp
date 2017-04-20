@@ -12,11 +12,11 @@ const unsigned nx = 16;
 //shows
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 int main()
 {
     
-    toefl::Matrix<double> field( nz, nx);
+    spectral::Matrix<double> field( nz, nx);
     cout << "Texture test: You should see the convection cell in ground state!\n";
 
     field.zero();

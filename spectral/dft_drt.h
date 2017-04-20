@@ -6,7 +6,7 @@
 #include "matrix.h"
 #include "fft.h"
 
-namespace toefl
+namespace spectral
 {
 /*! @brief Expansion class of DRT_DRT for periodic BC in the horizontal direction
  *
@@ -133,6 +133,6 @@ void DFT_DRT::c2r( Matrix<complex, TL_NONE>& m, Matrix<double, TL_DFT>& swap)
     fftw_execute_r2r( transpose_backward, swap.getPtr(), swap.getPtr());
     fftw_execute_dft_c2r( backward, reinterpret_cast<fftw_complex*>(swap.getPtr()), swap.getPtr());
 }
-} //namespace toefl
+} //namespace spectral
 
 #endif //_TL_DFT_DRT_

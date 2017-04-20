@@ -4,7 +4,7 @@
 #include "drt_drt.h"
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 
 
 const size_t rows = 512, cols = 4*512;

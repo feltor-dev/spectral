@@ -1,5 +1,5 @@
 /*! @file 
- * @brief This file includes all header files of the toefl library
+ * @brief This file includes all header files of the spectral library
  */
 #ifndef _TL_TOEFL_
 #define _TL_TOEFL_
@@ -27,8 +27,8 @@
 #include "dft_drt.h"
 #include "drt_dft.h"
 #include "drt_drt.h"
-namespace toefl{
-/*! @brief Convert toefl enum in fftw kind
+namespace spectral{
+/*! @brief Convert spectral enum in fftw kind
  *
  * @param bc Boundary condition 
  * @return The corresponding fftw kind
@@ -72,7 +72,7 @@ double fftw_normalisation( enum bc bc, unsigned n)
     }
     return norm;
 }
-}//namespace toefl
+}//namespace spectral
 #include "init.h"
 
 #endif //_TL_TOEFL_

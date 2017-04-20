@@ -5,7 +5,7 @@
 #include "fft.h"
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 
 
 unsigned rows = 500, cols = 4*500;

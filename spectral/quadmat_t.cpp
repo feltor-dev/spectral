@@ -3,7 +3,7 @@
 #include <complex>
 #include <iostream>
 
-using namespace toefl;
+using namespace spectral;
 using namespace std;
 
 int main()

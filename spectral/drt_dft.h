@@ -6,7 +6,7 @@
 #include "fftw3.h"
 #include "fft.h"
 
-namespace toefl{
+namespace spectral{
 
 /*! @brief Expansion class of DRT_DRT for periodic BC in the vertical direction. 
  *
@@ -125,5 +125,5 @@ void DRT_DFT::c_T2r( Matrix<complex, TL_NONE>& inout, Matrix<double, TL_DRT_DFT>
 }
 
 
-} //namespace toefl
+} //namespace spectral
 #endif //_TL_DRT_DFT_
