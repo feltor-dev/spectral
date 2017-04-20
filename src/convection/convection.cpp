@@ -4,13 +4,13 @@
 #include <omp.h>
 #include <vector>
 
-#include "toefl/toefl.h"
+#include "spectral/spectral.h"
 #include "file/read_input.h"
 #include "draw/host_window.h"
 #include "convection_solver.h"
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 
 typedef Convection_Solver Solver;
 typedef typename Solver::Matrix_Type Matrix_Type;

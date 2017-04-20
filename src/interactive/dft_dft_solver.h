@@ -3,14 +3,14 @@
 
 #include <complex>
 
-#include "toefl/toefl.h"
+#include "spectral/spectral.h"
 #include "blueprint.h"
 #include "equations.h"
 
-namespace toefl
+namespace spectral
 {
 
-/*! @brief Solver for periodic boundary conditions of the toefl equations.
+/*! @brief Solver for periodic boundary conditions of the spectral equations.
  * @ingroup solvers
  */
 template< size_t n>
@@ -244,7 +244,7 @@ void DFT_DFT_Solver<n>::init( std::array< Matrix<double, TL_DFT>,n>& v, enum tar
                 }
             break;
         case( ALL):
-            throw Message( "toefl::ALL not treated yet!", _ping_);
+            throw Message( "spectral::ALL not treated yet!", _ping_);
     }
     //compute the rest cphi[k]
     for( unsigned k=0; k<n-1; k++)
@@ -278,7 +278,7 @@ void DFT_DFT_Solver<n>::getField( Matrix<double, TL_DFT>& m, enum target t)
         case( IONS):         swap_fields( m, nonlinear[1]); break;
         case( IMPURITIES):   swap_fields( m, nonlinear[2]); break;
         case( POTENTIAL):    swap_fields( m, cphi[0]); break;
-        case( ALL):          throw Message( "toefl::ALL not allowed here", _ping_);
+        case( ALL):          throw Message( "spectral::ALL not allowed here", _ping_);
     }
 }
 template< size_t n>
@@ -291,7 +291,7 @@ const Matrix<double, TL_DFT>& DFT_DFT_Solver<n>::getField( enum target t) const
         case( IONS):         m = &dens[1]; break;
         case( IMPURITIES):   m = &dens[2]; break;
         case( POTENTIAL):    m = &phi[0]; break;
-        case( ALL):          throw Message( "toefl::ALL not allowed here", _ping_);
+        case( ALL):          throw Message( "spectral::ALL not allowed here", _ping_);
     }
     return *m;
 }
@@ -400,6 +400,6 @@ void DFT_DFT_Solver<n>::step_(const Matrix<double, TL_DFT>& src)
 }
 
 
-} //namespace toefl
+} //namespace spectral
 
 #endif //_DFT_DFT_SOLVER_

@@ -4,8 +4,8 @@
 #include <sstream>
 #include <omp.h>
 
-#include "toefl/toefl.h"
-#include "toefl/timer.h"
+#include "spectral/spectral.h"
+#include "spectral/timer.h"
 #include "file/read_input.h"
 #include "file/file.h"
 #include "particle_density.h"
@@ -16,7 +16,7 @@
 #include "blueprint.h"
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 typedef std::complex<double> Complex;
 
 const unsigned n = 3;
@@ -202,7 +202,7 @@ int main( int argc, char* argv[])
     std::vector<double> average(8,0);
     std::vector<double> out( alg.nx*alg.ny);
     std::vector<double> output[n+1] = {out, out, out, out};
-    toefl::Timer t, t2, t3;
+    spectral::Timer t, t2, t3;
     t.tic();
     file::Probe probe( argv[3], input, max_out*itstp/itstp2);
           probe.createSet( "ne", 8, 8);

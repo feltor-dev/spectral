@@ -16,7 +16,7 @@
  * visualizes results directly on the screen
  */
 using namespace std;
-using namespace toefl;
+using namespace spectral;
     
 unsigned N; //initialized by init function
 double amp, imp_amp; //

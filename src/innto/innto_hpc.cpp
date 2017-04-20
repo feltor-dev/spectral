@@ -4,7 +4,7 @@
 #include <omp.h>
 #include <netcdf.h>
 
-#include "toefl/toefl.h"
+#include "spectral/spectral.h"
 #include "file/read_input.h"
 #include "file/file.h"
 #include "dg/backend/grid.h"
@@ -19,7 +19,7 @@
  */
 
 using namespace std;
-using namespace toefl;
+using namespace spectral;
 
 const unsigned n = 2;
 typedef DFT_DFT_Solver<n> Sol;

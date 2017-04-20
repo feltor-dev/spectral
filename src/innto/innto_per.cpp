@@ -3,7 +3,7 @@
 #include <sstream>
 #include <omp.h>
 
-#include "toefl/toefl.h"
+#include "spectral/spectral.h"
 #include "file/read_input.h"
 #include "draw/host_window.h"
 #include "dft_dft_solver.h"
@@ -16,7 +16,7 @@
  * visualizes results directly on the screen
  */
 using namespace std;
-using namespace toefl;
+using namespace spectral;
     
 unsigned N; //initialized by init function
 double amp, imp_amp; //

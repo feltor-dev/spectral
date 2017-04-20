@@ -3,7 +3,7 @@
 
 #include <complex>
 
-#include "toefl/toefl.h"
+#include "spectral/spectral.h"
 
 enum target{
     TEMPERATURE, VORTICITY, POTENTIAL
@@ -20,7 +20,7 @@ struct Parameter
     double lz; 
     double h; 
     double dt;
-    enum toefl::bc bc_z;
+    enum spectral::bc bc_z;
     template< class Ostream>
     void display( Ostream& os)
     {
@@ -38,7 +38,7 @@ struct Parameter
 
 typedef std::complex<double> Complex;
 
-void rayleigh_equations( toefl::QuadMat< Complex,2>& coeff, const Complex dx, const Complex dy, const Parameter& p)
+void rayleigh_equations( spectral::QuadMat< Complex,2>& coeff, const Complex dx, const Complex dy, const Parameter& p)
 {
     double laplace = (dx*dx + dy*dy).real();
     coeff( 0,0) = laplace - p.nu*laplace*laplace,  coeff( 0,1) = -p.R*dx/laplace;
@@ -49,8 +49,8 @@ inline void laplace_inverse( double& l_inv, const Complex dx, const Complex dy)
 {
     l_inv = 1.0/(dx*dx + dy*dy).real();
 }
-namespace toefl{
-/*! @brief Solver for periodic boundary conditions of the toefl equations.
+namespace spectral{
+/*! @brief Solver for periodic boundary conditions of the spectral equations.
  * @ingroup solvers
  */
 class Convection_Solver
@@ -305,5 +305,5 @@ void Convection_Solver::step_()
     dft_drt.c2r( cphi,  phi); //field in phi again
 }
 
-}//namespace toefl
+}//namespace spectral
 #endif //_CONVECTION_SOLVER_

@@ -3,14 +3,14 @@
 
 #include <complex>
 
-#include "toefl/toefl.h"
+#include "spectral/spectral.h"
 #include "blueprint.h"
 #include "equations.h"
 
-namespace toefl
+namespace spectral
 {
 
-/*! @brief Solver for periodic boundary conditions of the toefl equations.
+/*! @brief Solver for periodic boundary conditions of the spectral equations.
  * @ingroup solvers
  */
 template< size_t n>
@@ -392,6 +392,6 @@ void DFT_DFT_Solver<n>::step_()
 }
 
 
-} //namespace toefl
+} //namespace spectral
 
 #endif //_DFT_DFT_SOLVER_

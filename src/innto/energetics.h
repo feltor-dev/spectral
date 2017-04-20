@@ -3,11 +3,11 @@
 #include <complex>
 #include <cassert>
 
-#include "toefl/toefl.h"
+#include "spectral/spectral.h"
 #include "blueprint.h"
 #include "equations.h"
 
-namespace toefl{
+namespace spectral{
 
     ///@addtogroup solvers
     ///@{
@@ -369,4 +369,4 @@ std::vector<double> Energetics<n>::diffusion( const std::array<Matrix<double, TL
 }
 ///@endcond
 ///@}
-} //namespace toefl
+} //namespace spectral

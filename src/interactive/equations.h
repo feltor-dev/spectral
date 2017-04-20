@@ -3,11 +3,11 @@
 
 #include <array>
 #include <complex>
-#include "toefl/matrix.h"
-#include "toefl/quadmat.h"
+#include "spectral/matrix.h"
+#include "spectral/quadmat.h"
 #include "blueprint.h"
 
-namespace toefl{
+namespace spectral{
    
 /*! @addtogroup equations
  * @{
@@ -83,7 +83,7 @@ class Poisson
     const double a_z, mu_z, tau_z;
 };
 
-/*! @brief Yield the linear part of the local toefl equations
+/*! @brief Yield the linear part of the local spectral equations
  *
  * \attention
  * The sine functions are not eigenfunctions of simple derivatives like e.g. dx!!
@@ -107,7 +107,7 @@ class Equations
         tau_i(phys.tau[0]), tau_z(phys.tau[1])
     {}
 
-    /*! @brief compute the linear part of the toefl equations without impurities
+    /*! @brief compute the linear part of the spectral equations without impurities
      *
      * @param coeff Contains the coefficients on output
      * @param laplace The value of the laplacian in fourier space
@@ -115,7 +115,7 @@ class Equations
      * \note This way you have the freedom to use various expansion functions (e.g. sine, cosine or exponential functions) 
      */
     void operator()( QuadMat<complex,2>& coeff, const double laplace, const complex dy) const ;
-    /*! @brief compute the linear part of the toefl equations with impurities
+    /*! @brief compute the linear part of the spectral equations with impurities
      *
      * @param coeff Contains the coefficients on output
      * @param laplace    The value of the laplacian in fourier space
@@ -231,7 +231,7 @@ double Poisson::gamma1_z( const double laplace) const
 //    return 0.5*tau_z*mu_z*laplace*gamma*gamma;
 //}
 
-} //namespace toefl
+} //namespace spectral
 
 
 

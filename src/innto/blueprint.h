@@ -3,14 +3,14 @@
 
 #include <iostream>
 #include <cmath>
-#include "toefl/ghostmatrix.h" // holds boundary conditions
-#include "toefl/message.h"
+#include "spectral/ghostmatrix.h" // holds boundary conditions
+#include "spectral/message.h"
 
-namespace toefl{
+namespace spectral{
 /*! @addtogroup parameters
  * @{
  */
-/*! @brief Possible capacities of a toefl solver
+/*! @brief Possible capacities of a spectral solver
  */
 enum cap{   TL_IMPURITY, //!< Include impurities
             TL_GLOBAL, //!< Solve global equations
@@ -128,7 +128,7 @@ struct Algorithmic
  * It is recommended to call 
  * \code
  *  try{ blueprint.consistencyCheck();}
- *  catch( toefl::Message& m){m.display();}
+ *  catch( spectral::Message& m){m.display();}
  *  \endcode
  * before constructing a Pipeline to catch any Messages before construction.
  */
@@ -306,6 +306,6 @@ void Blueprint::consistencyCheck() const
 
 
 
-} //namespace toefl
+} //namespace spectral
 
 #endif //_BLUEPRINT_

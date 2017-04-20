@@ -5,7 +5,7 @@
 
 #include "opencv2/opencv.hpp"
 
-#include "toefl/toefl.h"
+#include "spectral/spectral.h"
 #include "file/read_input.h"
 
 #include "draw/host_window.h"
@@ -45,7 +45,7 @@ void drawScene( const Solver& solver, draw::RenderHostData& rend)
     const typename Solver::Matrix_Type * field;
     
     { //draw electrons
-    field = &solver.getField( toefl::ELECTRONS);
+    field = &solver.getField( spectral::ELECTRONS);
     visual = field->copy(); 
     map.scale() = fabs(*std::max_element(visual.begin(), visual.end()));
     rend.renderQuad( visual, field->cols(), field->rows(), map);
@@ -54,7 +54,7 @@ void drawScene( const Solver& solver, draw::RenderHostData& rend)
     }
 
     { //draw Ions
-    field = &solver.getField( toefl::IONS);
+    field = &solver.getField( spectral::IONS);
     visual = field->copy();
     //upper right
     rend.renderQuad( visual, field->cols(), field->rows(), map);
@@ -63,7 +63,7 @@ void drawScene( const Solver& solver, draw::RenderHostData& rend)
 
     if( solver.blueprint().imp)
     {
-        field = &solver.getField( toefl::IMPURITIES); 
+        field = &solver.getField( spectral::IMPURITIES); 
         visual = field->copy();
         map.scale() = fabs(*std::max_element(visual.begin(), visual.end()));
         //lower left
@@ -74,7 +74,7 @@ void drawScene( const Solver& solver, draw::RenderHostData& rend)
         rend.renderEmptyQuad( );
 
     { //draw potential
-    field = &solver.getField( toefl::POTENTIAL); 
+    field = &solver.getField( spectral::POTENTIAL); 
     visual = field->copy(); 
     map.scale() = fabs(*std::max_element(visual.begin(), visual.end()));
     rend.renderQuad( visual, field->cols(), field->rows(), map);
@@ -91,7 +91,7 @@ int main( int argc, char* argv[])
     {
         std::cout << "Reading from input.txt\n";
         try{ para = file::read_input( "input.txt"); }
-        catch (toefl::Message& m) 
+        catch (spectral::Message& m) 
         {  
             m.display(); 
             throw m;
@@ -101,7 +101,7 @@ int main( int argc, char* argv[])
     {
         std::cout << "Reading from "<<argv[1]<<"\n";
         try{ para = file::read_input( argv[1]); }
-        catch (toefl::Message& m) 
+        catch (spectral::Message& m) 
         {  
             m.display(); 
             throw m;
@@ -114,29 +114,29 @@ int main( int argc, char* argv[])
     }
     omp_set_num_threads( para[20]);
     std::cout<< "With "<<omp_get_max_threads()<<" threads\n";
-    const toefl::Parameters p(para);
+    const spectral::Parameters p(para);
     field_ratio = p.lx/p.ly;
-    if( p.bc_x != toefl::TL_PERIODIC)
+    if( p.bc_x != spectral::TL_PERIODIC)
     {
         std::cerr << "Only periodic boundaries allowed!\n";
         return -1;
     }
     
     try{p.consistencyCheck();}
-    catch( toefl::Message& m){m.display();throw m;}
+    catch( spectral::Message& m){m.display();throw m;}
     p.display(std::cout);
     //construct solvers 
-    toefl::DFT_DFT_Solver<3> solver( p);
+    spectral::DFT_DFT_Solver<3> solver( p);
 
     // place some gaussian blobs in the field
     try{
-        toefl::Matrix<double, toefl::TL_DFT> ne{ p.ny, p.nx, 0.}, nz{ ne}, phi{ ne};
+        spectral::Matrix<double, spectral::TL_DFT> ne{ p.ny, p.nx, 0.}, nz{ ne}, phi{ ne};
         init_gaussian( ne, p.posX, p.posY, p.blob_width/p.lx, p.blob_width/p.ly, p.amp);
         //init_gaussian_column( nz, 0.6, 0.05/field_ratio, p.imp_amp);
-        std::array< toefl::Matrix<double, toefl::TL_DFT>,3> arr3{{ ne, nz, phi}};
+        std::array< spectral::Matrix<double, spectral::TL_DFT>,3> arr3{{ ne, nz, phi}};
         //now set the field to be computed
-        solver.init( arr3, toefl::IONS);
-    }catch( toefl::Message& m){m.display();}
+        solver.init( arr3, spectral::IONS);
+    }catch( spectral::Message& m){m.display();}
 
     cv::VideoCapture cap(0);
     if( !cap.isOpened())
@@ -152,12 +152,12 @@ int main( int argc, char* argv[])
     cv::namedWindow("Current",cv::WINDOW_NORMAL);
     cv::namedWindow("Velocity",cv::WINDOW_NORMAL);
     double t = 0.;
-    toefl::Timer timer;
-    toefl::Timer overhead;
+    spectral::Timer timer;
+    spectral::Timer overhead;
     solver.first_step();
     solver.second_step();
     t+= 2*p.dt;
-    toefl::Matrix<double, toefl::TL_DFT> src( p.ny, p.nx, 0.);
+    spectral::Matrix<double, spectral::TL_DFT> src( p.ny, p.nx, 0.);
     cv::Mat grey, colored, show( p.ny, p.nx, CV_32F);
     cap >> last;
     cv::cvtColor( last, last, CV_BGR2GRAY); //convert colors
@@ -190,8 +190,8 @@ int main( int argc, char* argv[])
         //    for( unsigned j=0; j<src.cols(); j++)
         //        src(i,j) = 0.5*vel.at<double>(i,j);
         overhead.tic();
-        //const toefl::Matrix<double, toefl::TL_DFT>& field = solver.getField( toefl::IMPURITIES); 
-        const toefl::Matrix<double, toefl::TL_DFT>& field = solver.getField( toefl::ELECTRONS); 
+        //const spectral::Matrix<double, spectral::TL_DFT>& field = solver.getField( spectral::IMPURITIES); 
+        const spectral::Matrix<double, spectral::TL_DFT>& field = solver.getField( spectral::ELECTRONS); 
         for( unsigned i=0; i<p.ny; i++)
             for( unsigned j=0; j<p.nx; j++)
                 show.at<float>(i,j) = (float)field(i,j);
@@ -229,7 +229,7 @@ int main( int argc, char* argv[])
         timer.tic();
         for(unsigned i=0; i<p.itstp; i++)
         {
-            toefl::Matrix<double, toefl::TL_DFT> voidmatrix( 2,2,(bool)toefl::TL_VOID);
+            spectral::Matrix<double, spectral::TL_DFT> voidmatrix( 2,2,(bool)spectral::TL_VOID);
             solver.step(src );
             t+= p.dt;
         }

@@ -6,15 +6,15 @@ DEBUG =
 
 GLFLAGS=$$(pkg-config --static --libs glfw3)
 
-spectral: spectral_b.cpp
+toefl: toefl_b.cpp
 	$(CXX) $(DEBUG) -O3 $< $(CFLAGS) $(INCLUDE) $(LIBS) $(GLFLAGS) -o $@
 	./$@
 
-spectral_t: spectral_t.cpp
+toefl_t: toefl_t.cpp
 	$(CXX) -DTL_DEBUG $< $(CFLAGS) $(INCLUDE) $(LIBS) $(GLFLAGS) -o $@
 	./$@
 
-spectral_b: spectral_b.cpp
+toefl_b: toefl_b.cpp
 	$(CXX) $(DEBUG) -O3 $< $(CFLAGS) $(INCLUDE) $(LIBS) $(GLFLAGS) -o $@
 	./$@
 

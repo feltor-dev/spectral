@@ -7,7 +7,7 @@ int main()
 {
     vector<double> v;
     try{ v = read_input( "input.test"); }
-    catch (toefl::Message& m) {  
+    catch (spectral::Message& m) {  
         m.display(); 
         for( unsigned i = 0; i<v.size(); i++)
             cout << v[i] << " ";

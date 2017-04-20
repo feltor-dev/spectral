@@ -1,7 +1,7 @@
 #ifndef _TL_PARTICLE_DENSITY_
 #define _TL_PARTICLE_DENSITY_
 
-#include "toefl/toefl.h"
+#include "spectral/spectral.h"
 #include "equations.h"
 #include "blueprint.h"
 
@@ -12,14 +12,14 @@
  */
 struct ParticleDensity
 {
-    typedef toefl::Matrix<double, toefl::TL_DFT> Matrix_Type;
-    ParticleDensity( const Matrix_Type& copy, const toefl::Blueprint& bp):
+    typedef spectral::Matrix<double, spectral::TL_DFT> Matrix_Type;
+    ParticleDensity( const Matrix_Type& copy, const spectral::Blueprint& bp):
         bp( bp),
         rows( copy.rows()), cols( copy.cols()),
         crows( rows), ccols( cols/2+1),
         cdens( crows, ccols ),
-        grad_phi( toefl::MatrixArray<double, toefl::TL_DFT,2>::construct( rows, cols)),
-        cgrad_phi( toefl::MatrixArray<complex, toefl::TL_NONE, 2>::construct( crows, ccols)),
+        grad_phi( spectral::MatrixArray<double, spectral::TL_DFT,2>::construct( rows, cols)),
+        cgrad_phi( spectral::MatrixArray<complex, spectral::TL_NONE, 2>::construct( crows, ccols)),
         dft_dft( rows, cols),
         poisson( bp.physical())
     {}
@@ -35,21 +35,21 @@ struct ParticleDensity
     void nabla( );
     void gamma( Matrix_Type&);
     typedef std::complex<double> complex;
-    toefl::Blueprint bp;
+    spectral::Blueprint bp;
     unsigned rows, cols;
     unsigned crows, ccols;
-    toefl::Matrix< complex> cdens;
+    spectral::Matrix< complex> cdens;
     std::array< Matrix_Type, 2> grad_phi;
-    std::array< toefl::Matrix<complex>, 2> cgrad_phi;
-    toefl::DFT_DFT dft_dft;
-    toefl::Poisson poisson;
+    std::array< spectral::Matrix<complex>, 2> cgrad_phi;
+    spectral::DFT_DFT dft_dft;
+    spectral::Poisson poisson;
 };
 ///@}
 
 ///@cond
 void ParticleDensity::nabla()
 {
-    const toefl::Boundary& bound = bp.boundary();
+    const spectral::Boundary& bound = bp.boundary();
     dft_dft.r2c( grad_phi[0], cgrad_phi[0]);
     dft_dft.r2c( grad_phi[1], cgrad_phi[1]);
     const complex dymin( 0, 2.*M_PI/bound.ly);
@@ -73,7 +73,7 @@ void ParticleDensity::nabla()
 
 void ParticleDensity::gamma( Matrix_Type& dens)
 {
-    const toefl::Boundary& bound = bp.boundary();
+    const spectral::Boundary& bound = bp.boundary();
     dft_dft.r2c( dens, cdens);
     const double kxmin2 = 2.*2.*M_PI*M_PI/(double)(bound.lx*bound.lx),
                  kymin2 = 2.*2.*M_PI*M_PI/(double)(bound.ly*bound.ly);
@@ -91,7 +91,7 @@ void ParticleDensity::gamma( Matrix_Type& dens)
 
 void ParticleDensity::nonlinear( const Matrix_Type& n, const Matrix_Type& phi, Matrix_Type& dens)
 {
-    const toefl::Physical& phys = bp.physical();
+    const spectral::Physical& phys = bp.physical();
     //copy elements for inplace trafo
     grad_phi[0] = grad_phi[1] = phi; 
     nabla();
@@ -112,8 +112,8 @@ void ParticleDensity::nonlinear( const Matrix_Type& n, const Matrix_Type& phi, M
 //0 is ions, 1 is impurities 
 void ParticleDensity::linear( const Matrix_Type& n, const Matrix_Type& phi, Matrix_Type& dens, unsigned species)
 {
-    const toefl::Boundary& bound = bp.boundary();
-    const toefl::Physical& phys = bp.physical();
+    const spectral::Boundary& bound = bp.boundary();
+    const spectral::Physical& phys = bp.physical();
     dens = n;
     grad_phi[0] = phi;
     dft_dft.r2c( dens, cdens);
@@ -133,7 +133,7 @@ void ParticleDensity::linear( const Matrix_Type& n, const Matrix_Type& phi, Matr
 }
 void ParticleDensity::laplace( Matrix_Type& phi)
 {
-    const toefl::Boundary& bound = bp.boundary();
+    const spectral::Boundary& bound = bp.boundary();
     dft_dft.r2c( phi, cgrad_phi[0]);
     const double kxmin2 = 2.*2.*M_PI*M_PI/(double)(bound.lx*bound.lx),
                  kymin2 = 2.*2.*M_PI*M_PI/(double)(bound.ly*bound.ly);

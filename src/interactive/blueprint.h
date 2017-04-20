@@ -3,14 +3,14 @@
 
 #include <iostream>
 #include <cmath>
-#include "toefl/ghostmatrix.h" // holds boundary conditions
-#include "toefl/message.h"
+#include "spectral/ghostmatrix.h" // holds boundary conditions
+#include "spectral/message.h"
 
-namespace toefl{
+namespace spectral{
 /*! @addtogroup parameters
  * @{
  */
-/*! @brief Possible capacities of a toefl solver
+/*! @brief Possible capacities of a spectral solver
  */
 enum cap{   IMPURITY, //!< Include impurities
             GLOBAL, //!< Solve global equations
@@ -179,6 +179,6 @@ struct Parameters
 
 
 
-} //namespace toefl
+} //namespace spectral
 
 #endif //_BLUEPRINT_
