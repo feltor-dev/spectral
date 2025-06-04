@@ -2,10 +2,10 @@ system = home
 INCLUDE = -I../../
 INCLUDE += -I$(HOME)/include
 
-CFLAGS = -Wall -std=c++0x -fopenmp
+CFLAGS = -Wall -std=c++11 -fopenmp
 
 CFLAGS+= -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_OMP#for nc_utilities
-GLFLAGS= -lfftw3 -lm 
+GLFLAGS= -lfftw3 -lm -lGL
 GLFLAGS+=$$(pkg-config --static --libs glfw3)
 LIBS = -lfftw3 -lhdf5 -lhdf5_hl -lnetcdf
 

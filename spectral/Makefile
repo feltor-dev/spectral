@@ -1,10 +1,10 @@
 INCLUDE = -I$(HOME)/include
 CXX = g++
-CFLAGS = -Wall -fopenmp -std=c++0x
+CFLAGS = -Wall -fopenmp -std=c++11
 LIBS = -lfftw3 -lm
 DEBUG = 
 
-GLFLAGS=$$(pkg-config --static --libs glfw3)
+GLFLAGS=$$(pkg-config --static --libs glfw3) -lGL
 
 toefl: toefl_b.cpp
 	$(CXX) $(DEBUG) -O3 $< $(CFLAGS) $(INCLUDE) $(LIBS) $(GLFLAGS) -o $@

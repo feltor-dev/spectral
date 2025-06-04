@@ -161,7 +161,7 @@ fftw_plan plan_transpose( const size_t rows, const size_t cols, fftw_complex *in
 
 fftw_plan plan_drt_1d( const size_t rows, const size_t cols, double *in, double *out, const fftw_r2r_kind kind, const unsigned flags = FFTW_MEASURE)
 {
-    int rank = 1, howmany_rank = 1;
+    constexpr int rank = 1, howmany_rank = 1;
     fftw_iodim dims[rank], howmany_dims[howmany_rank];
     fftw_r2r_kind kind_[] = {kind};
     dims[0].n  = cols;
@@ -175,7 +175,7 @@ fftw_plan plan_drt_1d( const size_t rows, const size_t cols, double *in, double 
 
 fftw_plan plan_dft_1d_r2c( const size_t rows, const size_t cols, double* in, fftw_complex* out, const unsigned flags)
 {
-    int rank = 1, howmany_rank = 1;
+    constexpr int rank = 1, howmany_rank = 1;
     fftw_iodim dims[rank], howmany_dims[howmany_rank];
     dims[0].n  = cols;
     dims[0].is = 1; //(double)
@@ -188,7 +188,7 @@ fftw_plan plan_dft_1d_r2c( const size_t rows, const size_t cols, double* in, fft
 
 fftw_plan plan_dft_1d_c2r( const size_t rows, const size_t cols, fftw_complex* in, double* out, const unsigned flags)
 {
-    int rank = 1, howmany_rank = 1;
+    constexpr int rank = 1, howmany_rank = 1;
     fftw_iodim dims[rank], howmany_dims[howmany_rank];
     dims[0].n  = cols;
     dims[0].is = 1;
@@ -200,7 +200,7 @@ fftw_plan plan_dft_1d_c2r( const size_t rows, const size_t cols, fftw_complex* i
 }
 fftw_plan plan_dft_1d_r2c_T( const size_t rows, const size_t cols, double* in, fftw_complex* out, const unsigned flags)
 {
-    int rank = 1, howmany_rank = 1;
+    constexpr int rank = 1, howmany_rank = 1;
     fftw_iodim dims[rank], howmany_dims[howmany_rank];
     dims[0].n  = cols;
     dims[0].is = 1; //(double)
@@ -214,7 +214,7 @@ fftw_plan plan_dft_1d_r2c_T( const size_t rows, const size_t cols, double* in, f
 //die letzten Zeilen sind padding
 fftw_plan plan_dft_1d_r_T2c( const size_t rows, const size_t cols, double* in, fftw_complex* out, const unsigned flags)
 {
-    int rank = 1, howmany_rank = 1;
+    constexpr int rank = 1, howmany_rank = 1;
     fftw_iodim dims[rank], howmany_dims[howmany_rank];
     dims[0].n  = rows;
     dims[0].is = cols; //(double)
@@ -227,7 +227,7 @@ fftw_plan plan_dft_1d_r_T2c( const size_t rows, const size_t cols, double* in, f
 
 fftw_plan plan_dft_1d_c2r_T( const size_t rows, const size_t cols, fftw_complex* in, double* out, const unsigned flags)
 {
-    int rank = 1, howmany_rank = 1;
+    constexpr int rank = 1, howmany_rank = 1;
     fftw_iodim dims[rank], howmany_dims[howmany_rank];
     dims[0].n  = rows;
     dims[0].is = 1;
@@ -239,7 +239,7 @@ fftw_plan plan_dft_1d_c2r_T( const size_t rows, const size_t cols, fftw_complex*
 }
 fftw_plan plan_dft_1d_c_T2r( const size_t rows, const size_t cols, fftw_complex* in, double* out, const unsigned flags)
 {
-    int rank = 1, howmany_rank = 1;
+    constexpr int rank = 1, howmany_rank = 1;
     fftw_iodim dims[rank], howmany_dims[howmany_rank];
     dims[0].n  = cols;
     dims[0].is = rows;
@@ -273,7 +273,7 @@ fftw_r2r_kind inverse_kind( fftw_r2r_kind kind)
 
 fftw_plan plan_dft_1d_c2c( const size_t rows, const size_t cols, fftw_complex* in, fftw_complex* out, const int sign, const unsigned flags)
 {
-    int rank = 1, howmany_rank = 1;
+    constexpr int rank = 1, howmany_rank = 1;
     fftw_iodim dims[rank], howmany_dims[howmany_rank];
     dims[0].n  = cols;
     dims[0].is = 1; 

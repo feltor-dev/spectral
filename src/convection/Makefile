@@ -1,8 +1,8 @@
-INCLUDE = -I../../inc
+INCLUDE = -I../../
 INCLUDE += -I$(HOME)/include
 
-CFLAGS = -Wall -std=c++0x -fopenmp
-LIBS = $$(pkg-config --static --libs glfw3) -lfftw3
+CFLAGS = -Wall -std=c++11 -fopenmp
+LIBS = $$(pkg-config --static --libs glfw3) -lGL -lfftw3
 CXX = g++
 
 all: convection

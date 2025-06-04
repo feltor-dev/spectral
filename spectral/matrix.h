@@ -163,7 +163,7 @@ class Matrix
      * This number doesn't change as long as memory is allocated for that object.
      * @return number of columns
      */
-    const size_t rows() const {return n;}
+    size_t rows() const {return n;}
     /*! @brief number of columns
      *
      * Return the number of columns the object manages (the one you specified in the constructor), even if 
@@ -171,7 +171,7 @@ class Matrix
      * This number doesn't change as long as memory is allocated for that object.
      * @return number of columns
      */
-    const size_t cols() const {return m;}
+    size_t cols() const {return m;}
     /*! @brief get the address of the first element
      *
      * Replaces the use of &m(0,0) which is kind of clumsy!
@@ -219,13 +219,13 @@ class Matrix
      * @param rhs Matrix to be compared to this
      * @return true if rhs does not equal this
      */
-    const bool operator!=( const Matrix& rhs) const; 
+    bool operator!=( const Matrix& rhs) const; 
     /*! @brief two Matrices are considered equal if elements are equal
      *
      * @param rhs Matrix to be compared to this
      * @return true if rhs equals this
      */
-    const bool operator==( const Matrix& rhs) const {return !((*this != rhs));}
+    bool operator==( const Matrix& rhs) const {return !((*this != rhs));}
     //hier sollte kein overhead für vektoren liegen weil der Compiler den 
     //Zugriff m(0,i) auf ptr[i] optimieren sollte
 
@@ -481,7 +481,7 @@ std::istream& operator>>( std::istream& is, Matrix<T, P>& mat)
 }
 
 template< class T, enum Padding P>
-const bool Matrix<T,P>::operator!= ( const Matrix& rhs) const
+bool Matrix<T,P>::operator!= ( const Matrix& rhs) const
 {
 #ifdef TL_DEBUG
     if( n != rhs.n || m != rhs.m)
